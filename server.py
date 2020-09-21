@@ -1,6 +1,5 @@
 import os
 import socket
-import re
 from threading import Thread
 
 clients = []
@@ -102,7 +101,7 @@ def main():
     # so if we close and immediately start server again – we'll get error
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     # listen to all interfaces at 8800 port
-    sock.bind(('', 8800))
+    sock.bind(('0.0.0.0', 8800))
     sock.listen()
     while True:
         # blocking call, waiting for new client to connect
